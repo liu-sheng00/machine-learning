@@ -10,7 +10,7 @@ from sklearn.metrics import roc_auc_score
 if __name__ == '__main__':
     print("Start reading data...")
     # Reading training data
-    train_data = pd.read_excel('Training set of anti-tumor drugs.xlsx')
+    train_data = pd.read_excel('Cardiotoxicity Morgan Fingerprint.xlsx')
     print("Training data reading completed")
 
     # Extracting features and labels
@@ -58,7 +58,7 @@ if __name__ == '__main__':
         trained_models[model_name] = best_model
 
         # Output the best parameters
-        print(f"{model_name} Optimal parameters: {grid_search.best_params_}")
+        print(f"{model_name} best parameters: {grid_search.best_params_}")
 
         # Output the AUC on the test set
         y_proba = best_model.predict_proba(X_test)[:, 1]
@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     # Reading prediction data
     print("Start reading forecast data...")
-    predict_data = pd.read_excel('Zanthoxylum nitidum and the Morgan fingerprint of FDA non-antineoplastic drugs.xlsx')
+    predict_data = pd.read_excel('Pesticide Morgan Fingerprint.xlsx')
     print("Prediction data reading completed")
 
     # Extract compound names and Morgan fingerprints
@@ -98,5 +98,5 @@ if __name__ == '__main__':
     })
 
     # Save results to Excel file
-    results_df.to_excel("Prediction probability of Zanthoxylum nitidum and FDA non-anti-tumor drugs.xlsx", index=False, engine='openpyxl')
-    print("The prediction results have been saved to 'Prediction probability of Zanthoxylum nitidum and FDA non-anti-tumor drugs.xlsx'")
+    results_df.to_excel("Pesticide prediction probability.xlsx", index=False, engine='openpyxl')
+    print("The prediction results have been saved to 'Pesticide prediction probability.xlsx'")
